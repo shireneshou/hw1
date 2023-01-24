@@ -18,7 +18,7 @@ CREATE TABLE actors (
   character_name TEXT
 );
 
-CREATE TABLE cast (
+CREATE TABLE movie_cast (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   movie_id INTEGER,
   actor_id INTEGER
@@ -44,7 +44,7 @@ VALUES ("Christian Bale", "Bruce Wayne"),
 ("Joseph Gordon-Levitt", "John Blake"),
 ("Anne Hathaway", "Selina Kyle");
 
-INSERT INTO cast (movie_id,actor_id)
+INSERT INTO movie_cast (movie_id,actor_id)
 VALUES (1,1), (1,2), (1,3), (1,4), (1,5),
 (2,1), (2,6), (2,7), (2,2), (2,8),
 (3,1), (3,5), (3,9), (3,10), (3,11);
@@ -70,10 +70,10 @@ FROM movies;
 -- Select cast data
 SELECT movies.movie_name, actors.actor_name, actors.character_name
 FROM movies 
-INNER JOIN cast
-ON movies.id = cast.movie_id 
+INNER JOIN movie_cast
+ON movies.id = movie_cast.movie_id 
 INNER JOIN actors 
-ON actors.id = cast.actor_id;
+ON actors.id = movie_cast.actor_id;
 
 
 -- In this assignment, you'll be building the domain model, database 
