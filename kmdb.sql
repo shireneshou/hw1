@@ -15,7 +15,6 @@ CREATE TABLE movies (
 
 CREATE TABLE cast (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  movie_name TEXT,
   actor_name TEXT,
   character_name TEXT
 );
@@ -35,8 +34,18 @@ VALUES ("Batman Begins", "2005", "PG-13", "Warner Bros."),
 ("The Dark Knight", "2008", "PG-13", "Warner Bros."),
 ("The Dark Knight Rises", "2012", "PG-13", "Warner Bros.");
 
-
-
+INSERT INTO cast(actor_name, character_name)
+VALUES ("Christian Bale", "Bruce Wayne"),
+("Michael Caine", "Alfred"),
+("Liam Neeson", "Ra's Al Ghul"),
+("Katie Holmes", "Rachel Dawes"),
+("Gary Oldman", "Commissioner Gordon"),
+("Heath Ledger", "Joker"),
+("Aaron Eckhart", "Harvey Dent"),
+("Maggie Gyllenhaal", "Rachel Dawes"),
+("Tom Hardy", "Bane"),
+("Joseph Gordon-Levitt", "John Blake"),
+("Anne Hathaway", "Selina Kyle");
 
 -- In this assignment, you'll be building the domain model, database 
 -- structure, and data for "KMDB" (the Kellogg Movie Database).
