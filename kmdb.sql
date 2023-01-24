@@ -60,9 +60,6 @@ VALUES (1,1), (1,2), (1,3), (1,4), (1,5),
 SELECT movie_name, year_released, MPAA_rating, studio_name
 FROM movies;
 
-SELECT * FROM movies;
-SELECT * FROM actors;
-SELECT * FROM cast;
 
 -- Prints a header for the cast output
 .print ""
@@ -72,11 +69,12 @@ SELECT * FROM cast;
 
 -- Select cast data
 SELECT movies.movie_name, actors.actor_name, actors.character_name
-FROM movies
-INNER JOIN cast 
-ON movies.id = cast.movie_id
+FROM movies 
+INNER JOIN cast
+ON movies.id = cast.movie_id 
 INNER JOIN actors 
 ON actors.id = cast.actor_id;
+
 
 -- In this assignment, you'll be building the domain model, database 
 -- structure, and data for "KMDB" (the Kellogg Movie Database).
