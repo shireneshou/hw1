@@ -1,3 +1,43 @@
+--Drop existing tables to start fresh
+DROP TABLE IF EXISTS movies;
+DROP TABLE IF EXISTS cast;
+DROP TABLE IF EXISTS movie_cast;
+DROP TABLE IF EXISTS studios;
+
+--CREATE TABLES
+CREATE TABLE movies (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  movie_name TEXT,
+  year_released TEXT,
+  MPAA_rating TEXT,
+  studio TEXT
+);
+
+CREATE TABLE cast (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  movie_name TEXT,
+  actor_name TEXT,
+  character_name TEXT
+);
+
+CREATE TABLE movie_cast (
+  cast_id INTEGER,
+  movie_id INTEGER
+);
+
+CREATE TABLE studios (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  studio_name TEXT
+);
+
+INSERT INTO movies (movie_name, year_released, MPAA_rating, studio)
+VALUES ("Batman Begins", "2005", "PG-13", "Warner Bros."),
+("The Dark Knight", "2008", "PG-13", "Warner Bros."),
+("The Dark Knight Rises", "2012", "PG-13", "Warner Bros.");
+
+
+
+
 -- In this assignment, you'll be building the domain model, database 
 -- structure, and data for "KMDB" (the Kellogg Movie Database).
 -- The end product will be a report that prints the movies and the 
