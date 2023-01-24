@@ -19,6 +19,7 @@ CREATE TABLE actors (
 );
 
 CREATE TABLE cast (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
   movie_id INTEGER,
   actor_id INTEGER
 );
@@ -72,9 +73,9 @@ SELECT * FROM cast;
 -- Select cast data
 SELECT movies.movie_name, actors.actor_name, actors.character_name
 FROM movies
-JOIN cast 
+INNER JOIN cast 
 ON movies.id = cast.movie_id
-JOIN actors 
+INNER JOIN actors 
 ON actors.id = cast.actor_id;
 
 -- In this assignment, you'll be building the domain model, database 
@@ -177,22 +178,6 @@ ON actors.id = cast.actor_id;
 -- Turns column mode on but headers off
 .mode column
 .headers off
-
--- Drop existing tables, so you'll start fresh each time this script is run.
--- TODO!
-
--- Create new tables, according to your domain model
--- TODO!
-
--- Insert data into your database that reflects the sample data shown above
--- Use hard-coded foreign key IDs when necessary
--- TODO!
-
-
-
--- The SQL statement for the movies output
--- TODO!
-
 
 
 
