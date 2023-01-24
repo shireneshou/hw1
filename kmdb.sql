@@ -47,6 +47,11 @@ VALUES ("Christian Bale", "Bruce Wayne"),
 ("Joseph Gordon-Levitt", "John Blake"),
 ("Anne Hathaway", "Selina Kyle");
 
+INSERT INTO movie_cast (cast_id, movie_id)
+VALUES (1,1), (1,2), (1,3), (1,4), (1,5),
+(2,1), (2,6), (2,7), (2,2), (2,8),
+(3,1), (3,5), (3,9), (3,10), (3,11);
+
 -- In this assignment, you'll be building the domain model, database 
 -- structure, and data for "KMDB" (the Kellogg Movie Database).
 -- The end product will be a report that prints the movies and the 
