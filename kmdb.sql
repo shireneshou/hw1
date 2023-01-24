@@ -1,10 +1,9 @@
---Drop existing tables to start fresh
+-- Drop existing tables to start fresh
 DROP TABLE IF EXISTS movies;
+DROP TABLE IF EXISTS actors;
 DROP TABLE IF EXISTS cast;
-DROP TABLE IF EXISTS movie_cast;
-DROP TABLE IF EXISTS studios;
 
---CREATE TABLES
+-- CREATE TABLES
 CREATE TABLE movies (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   movie_name TEXT,
@@ -13,24 +12,25 @@ CREATE TABLE movies (
   studio_name TEXT
 );
 
-CREATE TABLE cast (
+CREATE TABLE actors (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   actor_name TEXT,
   character_name TEXT
 );
 
-CREATE TABLE movie_cast (
-  cast_id INTEGER,
-  movie_id INTEGER
+CREATE TABLE cast (
+  movie_id INTEGER,
+  actor_id INTEGER
 );
 
+-- Populate data into tables
 
 INSERT INTO movies (movie_name, year_released, MPAA_rating, studio_name)
-VALUES ("Batman Begins", "2005", "PG-13", 1),
-("The Dark Knight", "2008", "PG-13", 1),
-("The Dark Knight Rises", "2012", "PG-13", 1);
+VALUES ("Batman Begins", "2005", "PG-13", "Warner Bros."),
+("The Dark Knight", "2008", "PG-13", "Warner Bros."),
+("The Dark Knight Rises", "2012", "PG-13", "Warner Bros.");
 
-INSERT INTO cast (actor_name, character_name)
+INSERT INTO actors (actor_name, character_name)
 VALUES ("Christian Bale", "Bruce Wayne"),
 ("Michael Caine", "Alfred"),
 ("Liam Neeson", "Ra's Al Ghul"),
@@ -43,11 +43,39 @@ VALUES ("Christian Bale", "Bruce Wayne"),
 ("Joseph Gordon-Levitt", "John Blake"),
 ("Anne Hathaway", "Selina Kyle");
 
-INSERT INTO movie_cast (cast_id, movie_id)
+INSERT INTO cast (movie_id,actor_id)
 VALUES (1,1), (1,2), (1,3), (1,4), (1,5),
 (2,1), (2,6), (2,7), (2,2), (2,8),
 (3,1), (3,5), (3,9), (3,10), (3,11);
 
+-- Generate Reports
+
+-- Prints a header for the movies output
+.print "Movies"
+.print "======"
+.print ""
+
+-- Select movie data
+SELECT movie_name, year_released, MPAA_rating, studio_name
+FROM movies;
+
+SELECT * FROM movies;
+SELECT * FROM actors;
+SELECT * FROM cast;
+
+-- Prints a header for the cast output
+.print ""
+.print "Top Cast"
+.print "========"
+.print ""
+
+-- Select cast data
+SELECT movies.movie_name, actors.actor_name, actors.character_name
+FROM movies
+JOIN cast 
+ON movies.id = cast.movie_id
+JOIN actors 
+ON actors.id = cast.actor_id;
 
 -- In this assignment, you'll be building the domain model, database 
 -- structure, and data for "KMDB" (the Kellogg Movie Database).
@@ -160,19 +188,12 @@ VALUES (1,1), (1,2), (1,3), (1,4), (1,5),
 -- Use hard-coded foreign key IDs when necessary
 -- TODO!
 
--- Prints a header for the movies output
-.print "Movies"
-.print "======"
-.print ""
+
 
 -- The SQL statement for the movies output
 -- TODO!
 
--- Prints a header for the cast output
-.print ""
-.print "Top Cast"
-.print "========"
-.print ""
+
 
 
 -- The SQL statement for the cast output
