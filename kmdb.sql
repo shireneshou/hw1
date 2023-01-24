@@ -10,7 +10,7 @@ CREATE TABLE movies (
   movie_name TEXT,
   year_released TEXT,
   MPAA_rating TEXT,
-  studio TEXT
+  studio_name TEXT
 );
 
 CREATE TABLE cast (
@@ -24,17 +24,13 @@ CREATE TABLE movie_cast (
   movie_id INTEGER
 );
 
-CREATE TABLE studios (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  studio_name TEXT
-);
 
-INSERT INTO movies (movie_name, year_released, MPAA_rating, studio)
-VALUES ("Batman Begins", "2005", "PG-13", "Warner Bros."),
-("The Dark Knight", "2008", "PG-13", "Warner Bros."),
-("The Dark Knight Rises", "2012", "PG-13", "Warner Bros.");
+INSERT INTO movies (movie_name, year_released, MPAA_rating, studio_name)
+VALUES ("Batman Begins", "2005", "PG-13", 1),
+("The Dark Knight", "2008", "PG-13", 1),
+("The Dark Knight Rises", "2012", "PG-13", 1);
 
-INSERT INTO cast(actor_name, character_name)
+INSERT INTO cast (actor_name, character_name)
 VALUES ("Christian Bale", "Bruce Wayne"),
 ("Michael Caine", "Alfred"),
 ("Liam Neeson", "Ra's Al Ghul"),
@@ -51,6 +47,7 @@ INSERT INTO movie_cast (cast_id, movie_id)
 VALUES (1,1), (1,2), (1,3), (1,4), (1,5),
 (2,1), (2,6), (2,7), (2,2), (2,8),
 (3,1), (3,5), (3,9), (3,10), (3,11);
+
 
 -- In this assignment, you'll be building the domain model, database 
 -- structure, and data for "KMDB" (the Kellogg Movie Database).
